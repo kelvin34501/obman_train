@@ -262,10 +262,12 @@ class HandNet(nn.Module):
             and BaseQueries.sides in sample.keys()
             and self.mano_lambdas
         ):
-            if sample["root"] == "palm":
-                root_palm = True
-            else:
-                root_palm = False
+            # print(list(sample.keys()))
+            # if sample["root"] == "palm":
+                # root_palm = True
+            # else:
+                # root_palm = False
+            root_palm = True
             mano_results = self.mano_branch(
                 features,
                 sides=sample[BaseQueries.sides],

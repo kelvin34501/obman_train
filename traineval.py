@@ -228,8 +228,9 @@ def main(args):
                 pin_memory=True,
                 drop_last=True,
             )
-            train_loaders.append(train_loader)
-        train_loader = ConcatDataloader(train_loaders)
+            # train_loaders.append(train_loader)
+        # train_loader = ConcatDataloader(train_loaders)
+        train_loader = train_loader
 
     # Initialize validation datasets
     val_loaders = []
@@ -267,8 +268,9 @@ def main(args):
             pin_memory=True,
             drop_last=drop_last,
         )
-        val_loaders.append(val_loader)
-    val_loader = ConcatDataloader(val_loaders)
+        # val_loaders.append(val_loader)
+    # val_loader = ConcatDataloader(val_loaders)
+    val_loader = val_loader
 
     # Get evaluation indexes
     val_idxs = None

@@ -188,25 +188,25 @@ def epoch_pass(
             "evaluator": evaluator,
         }
 
-        save_pck_file = os.path.join(pck_folder, "epoch_{}.eps".format(epoch))
-        if sample["dataset"] == "stereohands" and (sample["split"] == "test"):
-            overlay = "stereo_test"
-        elif sample["dataset"] == "stereohands" and (sample["split"] == "all"):
-            overlay = "stereo_all"
-        else:
-            overlay = None
+        # save_pck_file = os.path.join(pck_folder, "epoch_{}.eps".format(epoch))
+        # if sample["dataset"] == "stereohands" and (sample["split"] == "test"):
+        #     overlay = "stereo_test"
+        # elif sample["dataset"] == "stereohands" and (sample["split"] == "all"):
+        #     overlay = "stereo_all"
+        # else:
+        #     overlay = None
 
-        if np.isnan(auc_all):
-            print(
-                "Not saving pck info, normal in case of only 2D info supervision, abnormal otherwise"
-            )
-        else:
-            displaymano.save_pck_img(
-                thresholds, pck_curve_all, auc_all, save_pck_file, overlay=overlay
-            )
-        save_pck_pkl = os.path.join(pck_folder, "epoch_{}.pkl".format(epoch))
-        with open(save_pck_pkl, "wb") as p_f:
-            pickle.dump(pck_info, p_f)
+        # if np.isnan(auc_all):
+        #     print(
+        #         "Not saving pck info, normal in case of only 2D info supervision, abnormal otherwise"
+        #     )
+        # else:
+        #     displaymano.save_pck_img(
+        #         thresholds, pck_curve_all, auc_all, save_pck_file, overlay=overlay
+        #     )
+        # save_pck_pkl = os.path.join(pck_folder, "epoch_{}.pkl".format(epoch))
+        # with open(save_pck_pkl, "wb") as p_f:
+        #     pickle.dump(pck_info, p_f)
 
     else:
         pck_info = {}

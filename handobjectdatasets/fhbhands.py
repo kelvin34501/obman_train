@@ -134,12 +134,12 @@ class FHBHands:
         self.split_type = split_type
         self.original_subject_split = original_subject_split
 
-        self.root = "/sequoia/data2/dataset/handatasets/fhb"
+        self.root = "./datasymlinks/fhbhands"
         self.info_root = os.path.join(self.root, "Subjects_info")
         self.info_split = os.path.join(
             self.root, "data_split_action_recognition.txt"
         )
-        self.rgb_root = os.path.join(self.root, "process_yana", "videos_480")
+        self.rgb_root = os.path.join(self.root, "Video_files_480")
         self.skeleton_root = os.path.join(self.root, "Hand_pose_annotation_v1")
         self.filter_object = filter_object
         # Get file prefixes for images and annotations

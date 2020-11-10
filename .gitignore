@@ -15,3 +15,6 @@ __pycache__/
 notebooks
 *.lprof
 
+release_models.zip
+release_models/
+.vscode/

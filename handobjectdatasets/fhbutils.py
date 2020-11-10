@@ -6,10 +6,12 @@ import numpy as np
 
 
 def load_objects(
-        obj_root='/sequoia/data2/dataset/handatasets/fhb/Object_models',
+        obj_root='datasymlinks/fhbhands/Object_models',
         object_names=['juice']):
     all_models = OrderedDict()
     for obj_name in object_names:
+        if obj_name == "juice_bottle":
+            obj_name = "juice"
         import trimesh
         obj_path = os.path.join(obj_root, '{}_model'.format(obj_name),
                                 '{}_model.ply'.format(obj_name))
@@ -22,7 +24,7 @@ def load_objects(
 
 
 def load_object_infos(
-        seq_root='/sequoia/data2/dataset/handatasets/fhb/Object_6D_pose_annotation_v1'
+        seq_root='datasymlinks/fhbhands/Object_6D_pose_annotation_v1_1'
 ):
     subjects = os.listdir(seq_root)
     annots = {}
@@ -66,6 +68,10 @@ def get_action_train_test(lines_raw, subjects_info):
         if line.startswith('Test'):
             test_split = True
             continue
+
+        # if "Subject5/use_flash/6" in line:
+            # continue
+        
         subject, action_name, action_seq_idx = line.split(' ')[0].split('/')
         action_idx = line.split(' ')[1].strip()  # Action classif index
         frame_nb = int(subjects_info[subject][(action_name, action_seq_idx)])
@@ -89,7 +95,7 @@ def get_action_train_test(lines_raw, subjects_info):
                  for (sub, act_n, act_seq, _) in train_samples),
             axis=0))
     # 600 - 1 Subject5/use_flash/6 discarded sample
-    assert train_nb == 599, 'Should get 599 train samples, got {}'.format(
+    assert train_nb == 600, 'Should get 600 train samples, got {}'.format(
         train_nb)
     assert len(test_samples) + len(train_samples) == len(all_infos)
     return train_samples, test_samples, all_infos

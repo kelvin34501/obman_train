@@ -41,7 +41,7 @@ def add_dataset_opts(parser):
     parser.add_argument(
         "--fhbhands_split_type",
         default="subjects",
-        choices=["objects", "subjects", "actions"],
+        choices=["objects", "subjects", "action"],
         help="Mode for synthgrasp dataset",
     )
     parser.add_argument(
